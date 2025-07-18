@@ -15,6 +15,6 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
     Optional<Teacher> findByUuid(String uuid);
     Optional<Teacher> findByAfm(String afk);
 
-    @Query("SELECT count(*) FROM Teacher t WHERE t.uuid = ?1")
+    @Query("SELECT count(t) FROM Teacher t WHERE t.uuid = ?1")
     long getCount(String uuid);
 }
