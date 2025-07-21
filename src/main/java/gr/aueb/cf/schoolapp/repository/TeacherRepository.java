@@ -13,7 +13,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
     List<Teacher> findByRegionId(Long id);
     Optional<Teacher> findByUuid(String uuid);
-    Optional<Teacher> findByAfm(String afk);
+    Optional<Teacher> findByVat(String vat);
 
     @Query("SELECT count(t) FROM Teacher t WHERE t.uuid = ?1")
     long getCount(String uuid);

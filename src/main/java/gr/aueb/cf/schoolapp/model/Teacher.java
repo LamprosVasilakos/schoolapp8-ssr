@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "teachers")
-public class Teacher extends AbstractEntity{
+public class Teacher extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,19 +25,17 @@ public class Teacher extends AbstractEntity{
     private String uuid;
 
     @Column(unique = true)
-    private String afm;
+    private String vat;
 
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
 
-    @PrePersist // Everytime we insert a teacher the uuid value is pre persisted
-    public void initializeUUID(){
+    @PrePersist
+    public void initializeUUID() {
         if (uuid == null) uuid = UUID.randomUUID().toString();
     }
-
-
 }
