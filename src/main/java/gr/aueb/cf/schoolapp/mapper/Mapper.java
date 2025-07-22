@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Mapper {
 
     public Teacher mapToTeacherEntity(TeacherInsertDTO dto) {
-        return new Teacher(null, null, dto.getVat(), dto.getFirstname(), dto.getLastname(),null);
+        return new Teacher(null, null, dto.getVat(), dto.getFirstname(), dto.getLastname(), null);
     }
 
     public TeacherReadOnlyDTO mapToTeacherReadOnlyDTO(Teacher teacher) {
