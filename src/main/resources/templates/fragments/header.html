@@ -5,19 +5,19 @@
 <body>
 
 <header th:fragment="headerFragment">
-  <div class="outer">
-    <div class="items">
-      <a th:href="@{/}">
-        <img class="gov-gr-logo" th:src="@{/img/gov_header_logo.svg}" alt="Government Logo" width="40" height="auto">
-      </a>
-      <span class="title">Coding Factory - Education Reinvented</span>
+    <div class="outer">
+        <div class="items">
+            <a th:href="@{/}">
+                <img class="gov-gr-logo" th:src="@{/img/gov_header_logo.svg}" alt="Government Logo" width="40" height="auto">
+            </a>
+            <span class="title">Coding Factory - Education Reinvented</span>
+        </div>
+        <div class="login-name">
+            <span sec:authorize="isAuthenticated()" th:text="${#authentication.name}"></span>
+            <a class="log-out" th:href="@{/logout}" sec:authorize="isAuthenticated()">Έξοδος</a>
+        </div>
     </div>
-    <!--        <div class="login-name">-->
-    <!--            <span sec:authorize="isAuthenticated()" th:text="${#authentication.name}"></span>-->
-    <!--            <a class="log-out" th:href="@{/logout}" sec:authorize="isAuthenticated()">Έξοδος</a>-->
-    <!--        </div>-->
-  </div>
-  <div class="line"></div>
+    <div class="line"></div>
 </header>
 </body>
 </html>

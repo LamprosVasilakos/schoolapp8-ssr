@@ -14,6 +14,9 @@ import gr.aueb.cf.schoolapp.repository.TeacherRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -45,7 +48,7 @@ public class TeacherService implements ITeacherService {
     public Teacher saveTeacher(TeacherInsertDTO dto)
             throws EntityAlreadyExistsException, EntityInvalidArgumentException {
         try {
-            if (teacherRepository.findByVat(dto.getVat()).isPresent()) {
+            if (dto.getVat() != null && teacherRepository.findByVat(dto.getVat()).isPresent()) {
                 throw new EntityAlreadyExistsException("Teacher", "Teacher with vat " + dto.getVat() + " already exists");
             }
 
